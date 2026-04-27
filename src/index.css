@@ -1,0 +1,353 @@
+/* Font loaded asynchronously from index.html */
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* HeroSunCursor styles */
+.hero-cursor-area,
+.hero-cursor-area * {
+  cursor: none !important;
+}
+
+.hero-sun-cursor {
+  pointer-events: none;
+  position: fixed;
+  z-index: 1;
+  mix-blend-mode: screen;
+}
+
+.bg-radial-sun {
+  background: radial-gradient(circle, var(--tw-gradient-stops));
+}
+
+@keyframes gentle-pulse {
+  0%, 100% { transform: scale(1); opacity: 0.6; }
+  50% { transform: scale(1.05); opacity: 0.8; }
+}
+
+.animate-gentle-pulse {
+  animation: gentle-pulse 4s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.7; }
+}
+
+.animate-shimmer {
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+@keyframes soft-glow {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.6; }
+}
+
+.animate-soft-glow {
+  animation: soft-glow 5s ease-in-out infinite;
+}
+
+
+
+@layer base {
+  :root {
+    /* Clean white background with natural text */
+    --background: 0 0% 100%;
+    --foreground: 0 0% 20%;
+    
+    /* Card system with subtle natural tones */
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 20%;
+    
+    /* Popover components */
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 20%;
+    
+    /* Primary brand colors - natural mint green */
+    --primary: 120 30% 60%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 120 40% 70%;
+    
+    /* Secondary - dusty rose accent */
+    --secondary: 0 20% 92%;
+    --secondary-foreground: 0 0% 20%;
+    --secondary-accent: 345 25% 88%;
+    
+    /* Muted tones */
+    --muted: 120 15% 95%;
+    --muted-foreground: 0 0% 35%;
+    
+    /* Natural accent - mint green */
+    --accent: 150 25% 85%;
+    --accent-foreground: 0 0% 20%;
+    
+    /* Sky blue for special elements */
+    --sky: 200 30% 90%;
+    --sky-foreground: 200 30% 30%;
+    
+    /* Destructive */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    
+    /* Borders and inputs */
+    --border: 120 15% 90%;
+    --input: 120 15% 95%;
+    --ring: 120 30% 60%;
+    
+    /* Beautiful gradients for natural feel */
+    --gradient-hero: linear-gradient(135deg, hsl(120 40% 95%), hsl(200 30% 92%), hsl(345 30% 95%));
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%), hsl(120 20% 98%));
+    --gradient-accent: linear-gradient(90deg, hsl(345 25% 88%), hsl(200 30% 90%));
+    
+    /* Natural shadows with organic feel */
+    --shadow-soft: 0 4px 20px hsl(120 20% 80% / 0.1);
+    --shadow-card: 0 8px 30px hsl(120 15% 60% / 0.08);
+    --shadow-hover: 0 12px 40px hsl(120 15% 60% / 0.15);
+    
+    /* Smooth natural transitions */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    
+    --radius: 1rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  /* ============================================
+     WCAG 2.2 Focus Styles (2.4.7 + 2.4.11)
+     ============================================ */
+  
+  /* Global focus-visible for all focusable elements */
+  *:focus-visible {
+    outline: 3px solid hsl(var(--primary));
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  /* Specific styles for interactive elements */
+  button:focus-visible,
+  a:focus-visible,
+  [role="button"]:focus-visible {
+    outline: 3px solid hsl(var(--primary));
+    outline-offset: 2px;
+  }
+
+  /* Form inputs - different outline for better visibility */
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible {
+    outline: 3px solid hsl(var(--ring));
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+
+  /* Links in text - ensure visibility */
+  a:focus-visible {
+    outline: 3px solid hsl(var(--primary));
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  /* High contrast mode support (Windows High Contrast, forced-colors) */
+  @media (prefers-contrast: high) {
+    *:focus-visible {
+      outline-width: 4px;
+      outline-offset: 3px;
+    }
+  }
+
+  /* Forced colors mode (Windows High Contrast) */
+  @media (forced-colors: active) {
+    *:focus-visible {
+      outline: 3px solid CanvasText;
+    }
+  }
+
+  /* Skip link - accessibility feature */
+  .skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    z-index: 100;
+    padding: 8px 16px;
+    background: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+    text-decoration: none;
+    border-radius: 0 0 4px 0;
+    transition: top 0.2s;
+  }
+
+  .skip-link:focus {
+    top: 0;
+  }  
+  /* Typography scaling */
+  .text-fluid-xs { font-size: clamp(0.75rem, 2vw, 0.875rem); }
+  .text-fluid-sm { font-size: clamp(0.875rem, 2.5vw, 1rem); }
+  .text-fluid-base { font-size: clamp(1rem, 3vw, 1.125rem); }
+  .text-fluid-lg { font-size: clamp(1.125rem, 3.5vw, 1.25rem); }
+  .text-fluid-xl { font-size: clamp(1.25rem, 4vw, 1.5rem); }
+  .text-fluid-2xl { font-size: clamp(1.5rem, 5vw, 2rem); }
+  .text-fluid-3xl { font-size: clamp(2rem, 6vw, 2.5rem); }
+  .text-fluid-4xl { font-size: clamp(2.5rem, 7vw, 3.5rem); }
+}
+
+@layer components {
+  /* Natural button variants */
+  .btn-natural {
+    background: linear-gradient(90deg, hsl(var(--primary)), hsl(var(--primary-glow)));
+    @apply text-primary-foreground px-8 py-3 rounded-full font-medium hover:bg-primary transition-all duration-300;
+    box-shadow: var(--shadow-soft);
+  }
+  
+  .btn-natural:hover {
+    box-shadow: var(--shadow-card);
+    /* background: hsla(0, 0%, 100%, 0.254); */
+  }
+  
+  .btn-secondary {
+    @apply bg-secondary text-secondary-foreground border-2 px-8 py-3 rounded-full font-medium hover:bg-secondary transition-all duration-300;
+    border-color: hsl(var(--secondary-accent));
+  }
+  
+  .btn-secondary:hover {
+    background: hsl(var(--secondary-accent));
+  }
+  
+  .btn-outline {
+    /* background: white; */
+
+    /* @apply border-2 border-primary text-primary bg-transparent px-8 py-3 rounded-full font-medium hover:bg-primary hover:text-primary-foreground transition-all duration-300; */
+  }
+  
+  /* Card styles with natural feel */
+  .card-natural {
+    background: var(--gradient-card);
+    @apply rounded-2xl p-6 transform hover:-translate-y-1 transition-all duration-300;
+    box-shadow: var(--shadow-soft);
+  }
+  
+  .card-natural:hover {
+    box-shadow: var(--shadow-hover);
+  }
+  
+  .card-product {
+    @apply bg-white rounded-3xl p-6 transform hover:-translate-y-2 transition-all duration-500 border border-accent;
+    box-shadow: var(--shadow-card);
+  }
+  
+  .card-product:hover {
+    box-shadow: var(--shadow-hover);
+  }
+  
+  /* Natural section backgrounds */
+  .section-natural {
+    background: var(--gradient-hero);
+  }
+  
+  .section-accent {
+    background: var(--gradient-accent);
+  }
+  
+  /* Article content styles */
+  .article-content {
+    @apply prose prose-lg max-w-none;
+  }
+  
+  .article-content img {
+    @apply rounded-2xl my-8 shadow-card;
+  }
+  
+  .article-content blockquote {
+    @apply not-italic;
+  }
+  
+  .article-content hr {
+    @apply border-border my-8;
+  }
+}
+
+@layer utilities {
+  /* Typing animation keyframes */
+  @keyframes typewriter {
+    from { width: 0; }
+    to { width: 100%; }
+  }
+  
+  @keyframes blink-caret {
+    from, to { border-color: transparent; }
+    50% { border-color: hsl(var(--primary)); }
+  }
+  
+  .typing-animation {
+    overflow: hidden;
+    border-right: 3px solid;
+    white-space: nowrap;
+    animation: typewriter 3s steps(40, end), blink-caret 0.75s step-end infinite;
+    animation-delay: 0.5s;
+    animation-fill-mode: both;
+  }
+  
+  /* Fade in animations */
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  .animate-fade-in-up {
+    animation: fade-in-up 0.8s ease-out forwards;
+  }
+  
+  .animate-fade-in {
+    animation: fade-in 0.6s ease-out forwards;
+  }
+  
+  /* Stagger animation delays */
+  .animation-delay-100 { animation-delay: 0.1s; }
+  .animation-delay-200 { animation-delay: 0.2s; }
+  .animation-delay-300 { animation-delay: 0.3s; }
+  .animation-delay-400 { animation-delay: 0.4s; }
+  .animation-delay-500 { animation-delay: 0.5s; }
+}
