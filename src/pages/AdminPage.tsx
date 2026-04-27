@@ -26,6 +26,7 @@ const AdminPage = () => {
   );
   const [password, setPassword] = useState('');
   const [loginError, setLoginError] = useState('');
+  const [isLoggingIn, setIsLoggingIn] = useState(false);
 
   const [model, setModel] = useState<'S' | 'M' | 'L'>('M');
   const [color, setColor] = useState('');
@@ -39,14 +40,15 @@ const AdminPage = () => {
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoginError('');
+    setIsLoggingIn(true);
     try {
-      const r = await fetch('/api/admin/login', {
+      const loginRes = await fetch('/api/admin/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ password }),
       });
-      if (r.ok) {
-        const { token: t } = await r.json();
+      if (loginRes.ok) {
+        const { token: t } = await loginRes.json();
         localStorage.setItem('admin_token', t);
         setToken(t);
         setPassword('');
@@ -55,6 +57,8 @@ const AdminPage = () => {
       }
     } catch {
       setLoginError('Błąd połączenia z serwerem');
+    } finally {
+      setIsLoggingIn(false);
     }
   };
 
@@ -66,7 +70,7 @@ const AdminPage = () => {
     setResult(null);
     setNfcStatus('idle');
     try {
-      const r = await fetch('/api/admin/register-pot', {
+      const registerRes = await fetch('/api/admin/register-pot', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -74,10 +78,10 @@ const AdminPage = () => {
         },
         body: JSON.stringify({ model_type: model, color }),
       });
-      if (r.ok) {
-        setResult(await r.json());
+      if (registerRes.ok) {
+        setResult(await registerRes.json());
         setColor('');
-      } else if (r.status === 401) {
+      } else if (registerRes.status === 401) {
         localStorage.removeItem('admin_token');
         setToken(null);
       } else {
@@ -94,7 +98,9 @@ const AdminPage = () => {
     if (!result) return;
     setNfcStatus('writing');
     try {
-      // @ts-ignore — Web NFC API not in TS lib yet
+      // Web NFC API not yet in TS lib — see src/types/nfc.d.ts
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
       const ndef = new NDEFReader();
       await ndef.write({
         records: [{ recordType: 'url', data: result.nfc_url }],
@@ -135,20 +141,20 @@ const AdminPage = () => {
             {loginError && (
               <p className="text-sm text-destructive">{loginError}</p>
             )}
-            <Button type="submit" className="w-full">
-              Zaloguj
+            <Button type="submit" className="w-full" disabled={isLoggingIn}>
+              {isLoggingIn ? 'Logowanie...' : 'Zaloguj'}
             </Button>
           </form>
         ) : (
           <div className="space-y-8">
             <form onSubmit={handleRegister} className="space-y-4">
               <div className="space-y-2">
-                <Label>Model</Label>
+                <Label htmlFor="model-select">Model</Label>
                 <Select
                   value={model}
                   onValueChange={(v) => setModel(v as 'S' | 'M' | 'L')}
                 >
-                  <SelectTrigger>
+                  <SelectTrigger id="model-select">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
