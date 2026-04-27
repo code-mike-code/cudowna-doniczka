@@ -1,84 +1,95 @@
 # Cudowna Doniczka
 
-Strona internetowa promująca ekologiczne doniczki wykonane z Mineralnego Kompozytu Konopnego (MKK). Projekt łączy w sobie nowoczesny design, ekologię i technologię, prezentując zalety produktu oraz budując społeczność wokół marki.
+Promotional website for eco-friendly plant pots made from Hemp Mineral Composite (HMC). Combines modern design, ecology, and technology — showcasing product benefits and building a brand community.
 
-## O Projekcie
+## About
 
-"Cudowna Doniczka" to inicjatywa, która wykracza poza sprzedaż produktu. To platforma edukacyjna i społecznościowa, która inspiruje do życia w zgodzie z naturą.
+"Cudowna Doniczka" goes beyond selling a product. It's an educational and community platform inspiring sustainable living.
 
-**Główne Funkcje:**
-*   **Strona Główna:** Efektowna wizytówka z animowanym Hero Section i kursorami interaktywnymi.
-*   **Wydarzenia:** Sekcja z relacjami i zapowiedziami wydarzeń, warsztatów i targów.
-*   **Blog:** Artykuły edukacyjne o ekologii, MKK i pielęgnacji roślin.
-*   **Formularz Kontaktowy:** Zintegrowany z EmailJS do bezpośredniej komunikacji.
-*   **Responsywność:** Pełne wsparcie dla urządzeń mobilnych (RWD).
+**Features:**
+- **Home:** Animated Hero section with interactive cursors.
+- **Events:** Coverage and announcements for workshops and fairs.
+- **Blog:** Educational articles on ecology, HMC, and plant care.
+- **Contact Form:** Integrated with EmailJS.
+- **Responsive:** Full mobile support (RWD).
 
-## Technologie
+## Tech Stack
 
-Projekt został zbudowany przy użyciu nowoczesnego stosu technologicznego:
+| Layer | Technology |
+|---|---|
+| Frontend | React 18 |
+| Language | TypeScript |
+| Build | Vite |
+| Styles | Tailwind CSS |
+| UI Components | shadcn/ui (Radix UI) |
+| Routing | React Router v6 |
+| Server State | TanStack Query |
+| Forms | React Hook Form + Zod |
+| Icons | Lucide React |
+| Email | EmailJS |
+| Testing | Vitest |
 
-*   **Frontend:** React 18
-*   **Język:** TypeScript
-*   **Build Tool:** Vite
-*   **Style:** Tailwind CSS
-*   **Komponenty UI:** shadcn/ui (Radix UI)
-*   **Routing:** React Router v6
-*   **Zarządzanie Stanem / Dane:** TanStack Query (React Query)
-*   **Formularze:** React Hook Form + Zod
-*   **Ikony:** Lucide React
-*   **Email:** EmailJS
+## Requirements
 
-## Wymagania
+- Node.js v18+
+- npm v9+
 
-*   Node.js (v18 lub nowszy)
-*   npm (v9 lub nowszy)
+## Setup
 
-## Instalacja i Uruchomienie
+1. **Clone repo:**
+   ```bash
+   git clone <REPO_URL>
+   cd cudowna-doniczka
+   ```
 
-1.  **Sklonuj repozytorium:**
-    ```bash
-    git clone <URL_REPOZYTORIUM>
-    cd cudowna-doniczka-lovable
-    ```
+2. **Install deps:**
+   ```bash
+   npm install
+   ```
 
-2.  **Zainstaluj zależności:**
-    ```bash
-    npm install
-    ```
+3. **Configure env vars:**
+   Create `.env` from `.env.example` and fill in EmailJS credentials:
+   ```env
+   VITE_EMAILJS_SERVICE_ID=your_service_id
+   VITE_EMAILJS_TEMPLATE_ID=your_template_id
+   VITE_EMAILJS_PUBLIC_KEY=your_public_key
+   ```
 
-3.  **Skonfiguruj zmienne środowiskowe:**
-    Stwórz plik `.env` na podstawie `.env.example` i uzupełnij go swoimi danymi EmailJS:
-    ```env
-    VITE_EMAILJS_SERVICE_ID=twoj_service_id
-    VITE_EMAILJS_TEMPLATE_ID=twoj_template_id
-    VITE_EMAILJS_PUBLIC_KEY=twoj_public_key
-    ```
+4. **Start dev server:**
+   ```bash
+   npm run dev
+   ```
+   App runs at `http://localhost:8080`.
 
-4.  **Uruchom serwer deweloperski:**
-    ```bash
-    npm run dev
-    ```
-    Aplikacja będzie dostępna pod adresem `http://localhost:8080`.
+## Scripts
 
-## Dostępne Skrypty
+| Command | Description |
+|---|---|
+| `npm run dev` | Start dev server |
+| `npm run build` | Production build |
+| `npm run preview` | Preview production build |
+| `npm run lint` | Run ESLint |
+| `npm run test` | Run tests (Vitest) |
+| `npm run test:ui` | Run tests with UI |
+| `npm run test:coverage` | Run tests with coverage |
+| `npx tsc -b` | TypeScript type check |
 
-*   `npm run dev`: Uruchamia serwer deweloperski.
-*   `npm run build`: Buduje aplikację produkcyjną.
-*   `npm run preview`: Uruchamia podgląd wersji zbudowanej.
-*   `npm run lint`: Sprawdza kod pod kątem błędów (ESLint).
-*   `npx tsc -b`: Sprawdza typy TypeScript.
+## Project Structure
 
-## Struktura Katalogów
+```
+src/
+├── components/     # React components (ui/ + feature-specific)
+│   └── seo/        # SEO-related components
+├── hooks/          # Custom hooks
+├── lib/            # Utilities, types, data (data.ts)
+├── pages/          # Route views (Index, Events, Blog, Article, NotFound)
+└── test/           # Test setup
+public/             # Static assets
+```
 
-*   `/src`: Kod źródłowy aplikacji.
-    *   `/components`: Komponenty React (podzielone na `ui` i dedykowane).
-    *   `/pages`: Główne widoki strony (Index, Events, Blog, Article itp.).
-    *   `/lib`: Pliki pomocnicze, definicje typów i dane (`data.ts`).
-*   `/public`: Zasoby statyczne.
+## Notable Decisions
 
-## Ostatnie Zmiany
-
-*   **Wydajność:** Wdrożono Lazy Loading dla wszystkich podstron.
-*   **Stabilność:** Aplikacja działa w `React.StrictMode`, poprawiono typowanie TypeScript (`strict: true`).
-*   **UI/UX:** Zrefaktoryzowano mechanizm scrollowania (`useLayoutEffect`), naprawiono renderowanie HTML w artykułach.
-*   **Bezpieczeństwo:** Konfiguracja EmailJS przeniesiona do zmiennych środowiskowych.
+- **Lazy loading** on all routes for performance.
+- **React.StrictMode** enabled.
+- **EmailJS credentials** in env vars — not hardcoded.
+- **Scroll behavior** managed with `useLayoutEffect`.
