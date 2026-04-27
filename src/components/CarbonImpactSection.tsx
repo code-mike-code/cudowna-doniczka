@@ -6,6 +6,7 @@ import {
   totalCO2g,
   treeEquivalent,
   progressPercent,
+  MAX_ACTIVE_DAYS,
 } from '@/lib/carbonCalculator';
 
 export interface PotData {

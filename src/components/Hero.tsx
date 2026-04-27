@@ -46,7 +46,7 @@ const Hero = () => {
             alt="Beautiful eco-friendly flowerpots with natural hemp composite"
             className="w-full h-full object-cover"
             loading="eager"
-            fetchPriority="high"
+            fetchpriority="high"
             width="1920"
             height="1080"
           />
