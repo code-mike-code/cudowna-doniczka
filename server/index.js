@@ -5,6 +5,13 @@ const path = require('path');
 const adminRoutes = require('./routes/admin');
 const potRoutes = require('./routes/pot');
 
+const REQUIRED_ENV = ['JWT_SECRET', 'ADMIN_PASSWORD', 'DB_HOST', 'DB_USER', 'DB_PASS', 'DB_NAME'];
+const missing = REQUIRED_ENV.filter((k) => !process.env[k]);
+if (missing.length) {
+  console.error('Missing required env vars:', missing.join(', '));
+  process.exit(1);
+}
+
 const app = express();
 const PORT = process.env.PORT || 3001;
 

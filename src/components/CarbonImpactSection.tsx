@@ -34,7 +34,7 @@ const EXAMPLE_DATA: PotData = {
     .split('T')[0],
 };
 
-const CarbonImpactSection: React.FC<Props> = ({ potData }) => {
+const CarbonImpactSection = ({ potData }: Props) => {
   const isExample = !potData;
   const data = potData ?? EXAMPLE_DATA;
 
