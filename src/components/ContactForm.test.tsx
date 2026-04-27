@@ -53,14 +53,15 @@ describe('ContactForm', () => {
       </>
     );
 
-    const messageInput = screen.getByLabelText(/wiadomość/i);
-    await user.type(messageInput, 'short');
-    
+    await user.type(screen.getByLabelText(/imię/i), 'Jan');
+    await user.type(screen.getByLabelText(/email/i), 'jan@example.com');
+    await user.type(screen.getByLabelText(/wiadomość/i), 'ab');
+
     const submitButton = screen.getByRole('button', { name: /wyślij wiadomość/i });
     await user.click(submitButton);
 
     await waitFor(() => {
-      expect(screen.getByText(/wiadomość musi mieć co najmniej 10 znaków/i)).toBeInTheDocument();
+      expect(screen.getByText(/wiadomość musi mieć co najmniej 4 znaki/i)).toBeInTheDocument();
     });
   });
 
