@@ -99,7 +99,11 @@ const CarbonImpactSection = ({ potData }: Props) => {
               {days} / 250
             </p>
             <p className="text-sm text-muted-foreground mb-2">aktywnych dni</p>
-            <Progress value={progress} className="h-2" />
+            <Progress
+              value={progress}
+              className="h-2"
+              aria-label={`${days} z ${MAX_ACTIVE_DAYS} aktywnych dni`}
+            />
           </div>
 
           <div
