@@ -35,7 +35,7 @@ const PotPage = () => {
   return (
     <div className="min-h-screen bg-background">
       <Header />
-      <main className="pt-8">
+      <main className="pt-24 lg:pt-28">
         {status === 'loading' && (
           <div className="flex items-center justify-center py-32">
             <Loader2 className="h-8 w-8 animate-spin text-primary" />

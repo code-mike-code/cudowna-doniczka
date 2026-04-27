@@ -114,7 +114,7 @@ const AdminPage = () => {
   return (
     <div className="min-h-screen bg-background">
       <Header />
-      <main className="max-w-md mx-auto px-4 py-16">
+      <main className="max-w-md mx-auto px-4 pt-24 pb-16 lg:pt-28">
         <h1 className="text-2xl font-bold text-foreground mb-8">
           Panel Administracyjny
         </h1>
