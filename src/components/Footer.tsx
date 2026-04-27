@@ -15,6 +15,7 @@ const Footer = () => {
 
   const legalLinks = [
     { name: 'Polityka Prywatności', href: '/privacy' },
+    { name: 'Panel administracyjny', href: '/admin' },
     // { name: 'Regulamin', href: '/terms' },
     // { name: 'Zwroty i Reklamacje', href: '/returns' },
     // { name: 'Dostawa', href: '/shipping' }
