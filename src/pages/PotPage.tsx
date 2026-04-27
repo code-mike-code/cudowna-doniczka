@@ -20,7 +20,9 @@ const PotPage = () => {
   useEffect(() => {
     if (!uuid) { setStatus('notfound'); return; }
 
-    fetch(`/api/pot/${uuid}`)
+    const controller = new AbortController();
+
+    fetch(`/api/pot/${uuid}`, { signal: controller.signal })
       .then((r) => {
         if (r.status === 404) { setStatus('notfound'); return null; }
         if (!r.ok) throw new Error();
@@ -29,7 +31,11 @@ const PotPage = () => {
       .then((data) => {
         if (data) { setPot(data); setStatus('ok'); }
       })
-      .catch(() => setStatus('error'));
+      .catch((err) => {
+        if (err.name !== 'AbortError') setStatus('error');
+      });
+
+    return () => controller.abort();
   }, [uuid]);
 
   return (
