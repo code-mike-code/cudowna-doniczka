@@ -15,10 +15,6 @@ const Footer = () => {
 
   const legalLinks = [
     { name: 'Polityka Prywatności', href: '/privacy' },
-    { name: 'Panel administracyjny', href: '/admin' },
-    // { name: 'Regulamin', href: '/terms' },
-    // { name: 'Zwroty i Reklamacje', href: '/returns' },
-    // { name: 'Dostawa', href: '/shipping' }
   ];
 
   return (
@@ -69,18 +65,13 @@ const Footer = () => {
             <h3 className="font-semibold text-foreground">Współpraca</h3>
             <div className="space-y-4">
               <div className="flex items-start space-x-3">
-                {/* <Mail className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" /> */}
                 <div>
-                  {/* <p className="text-sm text-foreground font-medium">Email</p> */}
-                  <a
-                    href="#"
-                    className="text-sm text-muted-foreground hover:text-primary transition-colors"
-                  >
+                  <span className="text-sm text-muted-foreground">
                     Fundacja EWC
-                  </a>
+                  </span>
                   <p className="text-xs text-muted-foreground">
-                Wspieramy ekologię i działalność charytatywną
-              </p>
+                    Wspieramy ekologię i działalność charytatywną
+                  </p>
                 </div>
               </div>
               
