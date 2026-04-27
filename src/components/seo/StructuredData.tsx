@@ -9,8 +9,8 @@ interface OrganizationSchemaProps {
 
 export const OrganizationSchema: FC<OrganizationSchemaProps> = ({
   name = "Cudowna Doniczka - Fundacja EWC",
-  url = "https://cudowna-doniczka.com",
-  logo = "https://cudowna-doniczka.com/logo.png"
+  url = "https://cudownadoniczka.pl",
+  logo = "https://cudownadoniczka.pl/logo.png"
 }) => {
   const schema = {
     "@context": "https://schema.org",
@@ -45,7 +45,7 @@ interface ProductSchemaProps {
 export const ProductSchema: FC<ProductSchemaProps> = ({
   name,
   description,
-  image = "https://cudowna-doniczka.com/images/product.jpg"
+  image = "https://cudownadoniczka.pl/images/product.jpg"
 }) => {
   const schema = {
     "@context": "https://schema.org",
@@ -88,7 +88,7 @@ export const ArticleSchema: FC<ArticleSchemaProps> = ({
   description,
   author,
   datePublished,
-  image = "https://cudowna-doniczka.com/images/article.jpg",
+  image = "https://cudownadoniczka.pl/images/article.jpg",
   url = window.location.href
 }) => {
   const schema = {
@@ -107,7 +107,7 @@ export const ArticleSchema: FC<ArticleSchemaProps> = ({
       "name": "Cudowna Doniczka - Fundacja EWC",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://cudowna-doniczka.com/logo.png"
+        "url": "https://cudownadoniczka.pl/logo.png"
       }
     },
     "mainEntityOfPage": {
@@ -138,7 +138,7 @@ export const EventSchema: FC<EventSchemaProps> = ({
   description,
   startDate,
   location = "Online / Do ustalenia",
-  image = "https://cudowna-doniczka.com/images/event.jpg"
+  image = "https://cudownadoniczka.pl/images/event.jpg"
 }) => {
   const schema = {
     "@context": "https://schema.org",
@@ -154,7 +154,7 @@ export const EventSchema: FC<EventSchemaProps> = ({
     "organizer": {
       "@type": "Organization",
       "name": "Fundacja EWC",
-      "url": "https://cudowna-doniczka.com"
+      "url": "https://cudownadoniczka.pl"
     },
     "eventStatus": "https://schema.org/EventScheduled",
     "eventAttendanceMode": "https://schema.org/MixedEventAttendanceMode"

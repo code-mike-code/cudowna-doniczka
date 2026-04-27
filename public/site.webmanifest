@@ -1,0 +1,13 @@
+{
+  "name": "Cudowna Doniczka – Fundacja EWC",
+  "short_name": "Cudowna Doniczka",
+  "description": "Ekologiczne doniczki z Mineralnego Kompozytu Konopnego pochłaniające CO₂.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#7AB87A",
+  "icons": [
+    { "src": "/android-chrome-192x192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/android-chrome-512x512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}
