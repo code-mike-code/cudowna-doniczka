@@ -14,18 +14,18 @@ import event2Photo3 from '@/assets/optimized/event-photos/event-id2-3.webp';
 import event2Photo4 from '@/assets/optimized/event-photos/event-id2-4.webp';
 import event2Photo5 from '@/assets/optimized/event-photos/event-id2-5.webp';
 import event2Photo6 from '@/assets/optimized/event-photos/event-id2-6.webp';
-import event2Photo7 from '@/assets/optimized/event-photos/event-id2-7.webp';
-import event2Photo8 from '@/assets/optimized/event-photos/event-id2-8.webp';
-import event2Photo9 from '@/assets/optimized/event-photos/event-id2-9.webp';
-import event2Photo10 from '@/assets/optimized/event-photos/event-id2-10.webp';
-import event2Photo11 from '@/assets/optimized/event-photos/event-id2-11.webp';
-import event2Photo12 from '@/assets/optimized/event-photos/event-id2-12.webp';
-import event2Photo13 from '@/assets/optimized/event-photos/event-id2-13.webp';
-import event2Photo14 from '@/assets/optimized/event-photos/event-id2-14.webp';
-import event2Photo15 from '@/assets/optimized/event-photos/event-id2-15.webp';
-import event2Photo16 from '@/assets/optimized/event-photos/event-id2-16.webp';
-import event2Photo17 from '@/assets/optimized/event-photos/event-id2-17.webp';
-import event2Photo18 from '@/assets/optimized/event-photos/event-id2-18.webp';
+// import event2Photo7 from '@/assets/optimized/event-photos/event-id2-7.webp';
+// import event2Photo8 from '@/assets/optimized/event-photos/event-id2-8.webp';
+// import event2Photo9 from '@/assets/optimized/event-photos/event-id2-9.webp';
+// import event2Photo10 from '@/assets/optimized/event-photos/event-id2-10.webp';
+// import event2Photo11 from '@/assets/optimized/event-photos/event-id2-11.webp';
+// import event2Photo12 from '@/assets/optimized/event-photos/event-id2-12.webp';
+// import event2Photo13 from '@/assets/optimized/event-photos/event-id2-13.webp';
+// import event2Photo14 from '@/assets/optimized/event-photos/event-id2-14.webp';
+// import event2Photo15 from '@/assets/optimized/event-photos/event-id2-15.webp';
+// import event2Photo16 from '@/assets/optimized/event-photos/event-id2-16.webp';
+// import event2Photo17 from '@/assets/optimized/event-photos/event-id2-17.webp';
+// import event2Photo18 from '@/assets/optimized/event-photos/event-id2-18.webp';
 
 // Event 3 - GARDENIA 2022
 import event3Photo1 from '@/assets/optimized/event-photos/event-id3-1.webp';
@@ -34,8 +34,8 @@ import event3Photo3 from '@/assets/optimized/event-photos/event-id3-3.webp';
 import event3Photo4 from '@/assets/optimized/event-photos/event-id3-4.webp';
 import event3Photo5 from '@/assets/optimized/event-photos/event-id3-5.webp';
 import event3Photo6 from '@/assets/optimized/event-photos/event-id3-6.webp';
-import event3Photo7 from '@/assets/optimized/event-photos/event-id3-7.webp';
-import event3Photo8 from '@/assets/optimized/event-photos/event-id3-8.webp';
+// import event3Photo7 from '@/assets/optimized/event-photos/event-id3-7.webp';
+// import event3Photo8 from '@/assets/optimized/event-photos/event-id3-8.webp';
 
 // Export photo arrays for each event
 export const event1Photos = [
