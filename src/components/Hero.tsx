@@ -1,25 +1,25 @@
 import { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
-// import { ArrowRight } from 'lucide-react';
 import heroImage640 from '@/assets/optimized/hero-img-640.webp';
 import heroImage1280 from '@/assets/optimized/hero-img-1280.webp';
 import heroImage1920 from '@/assets/optimized/hero-img-1920.webp';
 import heroImageFallback from '@/assets/hero-img.jpg';
 
+const FULL_TEXT = 'Od Donic Po Wszystko!';
+
 const Hero = () => {
   const [displayText, setDisplayText] = useState('');
   const [currentIndex, setCurrentIndex] = useState(0);
-  const fullText = 'Od Donic Po Wszystko!';
 
   useEffect(() => {
-    if (currentIndex < fullText.length) {
+    if (currentIndex < FULL_TEXT.length) {
       const timeout = setTimeout(() => {
-        setDisplayText(prev => prev + fullText[currentIndex]);
+        setDisplayText(prev => prev + FULL_TEXT[currentIndex]);
         setCurrentIndex(prev => prev + 1);
       }, 100);
       return () => clearTimeout(timeout);
     }
-  }, [currentIndex, fullText]);
+  }, [currentIndex]);
 
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden section-natural">
@@ -57,30 +57,22 @@ const Hero = () => {
       {/* Content */}
       <div className="relative z-10 max-w-6xl mx-auto px-4 py-16 sm:px-6 lg:px-8 text-center">
         <div className="space-y-8">
-          {/* Main Headline with Typing Animation */}
-          <div className="space-y-4x">
+          <div className="space-y-4">
             <h1 className="pt-6 text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-foreground leading-tight break-words hyphens-auto">
               <span className="inline-block typing-animation">
                 {displayText}
-                <span className="border-r-3 border-primary ml-1 animate-pulse"></span>
+                <span aria-hidden="true" className="border-r-3 border-primary ml-1 animate-pulse"></span>
               </span>
             </h1>
             <p className="text-fluid-xl text-foreground text-gray-700 py-4 max-w-3xl mx-auto animate-fade-in-up animation-delay-300">
-              Rewolucyjne doniczki z Mineralnego Kompozytu Konopnego, które pochłaniają CO₂ 
+              Rewolucyjne doniczki z Mineralnego Kompozytu Konopnego, które pochłaniają CO₂
               i tworzą idealny dom dla Twoich roślin. Wspieramy Fundację EWC.
             </p>
           </div>
 
-          {/* Call to Action Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in-up animation-delay-500">
-            {/* <Button 
-              className="btn-natural text-lg px-8 py-4"
-            >
-              Licytuj!
-              <ArrowRight className="ml-2 w-5 h-5" />
-            </Button> */}
-            <Button 
-              variant="outline" 
+            <Button
+              variant="outline"
               className="btn-outline text-lg px-8 py-6 hover:bg-background/55"
               asChild
             >
