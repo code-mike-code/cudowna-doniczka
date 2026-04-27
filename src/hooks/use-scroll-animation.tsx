@@ -17,7 +17,7 @@ export const useScrollAnimation = (options: UseScrollAnimationOptions = {}) => {
       ([entry]: IntersectionObserverEntry[]) => {
         if (entry.isIntersecting) {
           setIsVisible(true);
-          observer.disconnect(); // Odłącz po animacji
+          observer.disconnect();
         }
       },
       {
@@ -29,7 +29,7 @@ export const useScrollAnimation = (options: UseScrollAnimationOptions = {}) => {
     observer.observe(element);
 
     return () => {
-      observer.unobserve(element);
+      observer.disconnect();
     };
   }, [options.threshold, options.rootMargin]);
 
