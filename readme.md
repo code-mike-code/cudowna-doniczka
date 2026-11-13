@@ -77,13 +77,22 @@ DB_NAME=cudowna_doniczka
 JWT_SECRET=minimum_32_chars_random_string
 ADMIN_PASSWORD=your_admin_password
 NODE_ENV=development
+# Behind a reverse proxy (nginx, Render, Heroku…): number of proxy hops, usually 1.
+# Without it the login rate limit sees one IP for all users.
+TRUST_PROXY=
 ```
 
 ### 3. Init database
 
+Migrations live in `server/migrations/NNN_name.sql` and are tracked in a `schema_migrations` table.
+
 ```bash
-mysql -u your_db_user -p cudowna_doniczka < server/db-setup.sql
+cd server
+npm run migrate            # dry run: lists pending migrations
+npm run migrate -- --apply # applies them (back up the DB first on production)
 ```
+
+MySQL auto-commits DDL, so a failed migration cannot be rolled back automatically.
 
 ### 4. Install deps
 
@@ -172,14 +181,17 @@ src/
 └── test/               # Test setup
 public/                 # Static assets
 server/
-├── index.js            # Express entry point
+├── index.js            # Entry point: env check, listen
+├── app.js              # Express app factory (helmet/CSP, routes) — used by tests
 ├── db.js               # MySQL connection pool
-├── db-setup.sql        # Schema
+├── lib/                # serial numbers, validation
+├── migrations/         # NNN_name.sql, applied by scripts/migrate.js
 ├── middleware/
 │   └── auth.js         # JWT middleware
-└── routes/
-    ├── admin.js        # POST /login, POST /register-pot
-    └── pot.js          # GET /:uuid
+├── routes/
+│   ├── admin.js        # POST /login (rate limited), POST /register-pot, POST /pots/:id/confirm-encoded
+│   └── pot.js          # GET /:uuid (only encoded/active pots)
+└── test/               # vitest + supertest (fake DB pool)
 scripts/                # Image optimization scripts
 ```
 

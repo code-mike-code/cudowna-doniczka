@@ -24,7 +24,8 @@ const PotPage = () => {
 
     fetch(`/api/pot/${uuid}`, { signal: controller.signal })
       .then((r) => {
-        if (r.status === 404) { setStatus('notfound'); return null; }
+        // 400 = malformed UUID in the URL — retrying will never help, so not a connection error
+        if (r.status === 404 || r.status === 400) { setStatus('notfound'); return null; }
         if (!r.ok) throw new Error();
         return r.json();
       })

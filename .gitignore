@@ -9,6 +9,11 @@ dist/
 .env.local
 .env.*.local
 
+# NFC chip keys and supplier manifests — never commit
+keys/
+*.keys
+manifest*.csv
+
 # TypeScript build info
 *.tsbuildinfo
 
