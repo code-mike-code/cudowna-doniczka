@@ -4,14 +4,22 @@
   "type": "commonjs",
   "scripts": {
     "start": "node index.js",
-    "dev": "node --watch index.js"
+    "dev": "node --watch index.js",
+    "test": "vitest run",
+    "migrate": "node scripts/migrate.js"
   },
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
+    "express-rate-limit": "^8.7.4",
+    "helmet": "^8.3.0",
     "jsonwebtoken": "^9.0.2",
     "mysql2": "^3.9.4",
     "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "supertest": "^7.3.2",
+    "vitest": "^5.1.0"
   }
 }

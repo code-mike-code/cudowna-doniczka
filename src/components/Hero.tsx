@@ -46,9 +46,11 @@ const Hero = () => {
             alt="Beautiful eco-friendly flowerpots with natural hemp composite"
             className="w-full h-full object-cover"
             loading="eager"
-            fetchpriority="high"
+            // React 18 has no camelCase fetchPriority prop and its types reject the
+            // lowercase attribute — spread it so it reaches the DOM untouched.
+            {...{ fetchpriority: 'high' }}
             width="1920"
-            height="1080"
+            height="1280"
           />
         </picture>
         <div className="absolute inset-0 bg-white/55 backdrop-blur-[2px]"></div>
